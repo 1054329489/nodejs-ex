@@ -39,7 +39,7 @@ if (mongoURL == null) {
     }
   }
 
-  // if (mongoHost && mongoPort && mongoDatabase) {
+  if (mongoHost && mongoPort && mongoDatabase) {
     mongoURLLabel = mongoURL = 'mongodb://';
     if (mongoUser && mongoPassword) {
       mongoURL += mongoUser + ':' + mongoPassword + '@';
@@ -47,7 +47,7 @@ if (mongoURL == null) {
     // Provide UI label that excludes user id and pw
     mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
     mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
-  // }
+  }
 }
 var db = null,
     dbDetails = new Object();
@@ -66,7 +66,7 @@ var initDb = function(callback) {
 
     db = conn;
     dbDetails.databaseName = db.databaseName;
-    dbDetails.url = mongoURLLabel;
+    dbDetails.url = mongoURL;
     dbDetails.type = 'MongoDB';
 
     console.log('Connected to MongoDB at: %s', mongoURL);
